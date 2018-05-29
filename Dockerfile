@@ -9,9 +9,11 @@ RUN yum install -y \
 
 RUN gem install --no-ri --no-rdoc fpm
 
-#RUN useradd builder -u 1000 -m -G users,wheel && \
-#  echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers && \
-#  mkdir /build && chown -R builder /build
+RUN useradd builder -u 1000 -m -G users,wheel && \
+  echo "builder ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers && \
+  mkdir /build && chown -R builder /build
 
-#USER builder
+USER builder
+
+WORKDIR /build
 
