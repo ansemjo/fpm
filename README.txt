@@ -3,7 +3,12 @@ build an image from the Dockerfile and tag it with the
 current version (from `git describe`) and latest. Simply
 run:
 
-  $ make
+  $ make build
+
+For testing purposes you can build images with the tag
+development using:
+
+  $ make dev
 
 The image includes some build dependencies and the fpm
 packager. It is designed to be used by mounting a volume
