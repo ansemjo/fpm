@@ -1,10 +1,8 @@
 image: docker:latest
 
-services:
-  - docker:dind
-
 variables:
-  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+  IMAGE: $CI_REGISTRY_IMAGE
+  SLUG: $CI_COMMIT_REF_SLUG
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
@@ -12,5 +10,7 @@ before_script:
 build:
   stage: build
   script:
-    - docker build -t $IMAGE_TAG .
-    - docker push $IMAGE_TAG
+    - docker build -t $IMAGE:$SLUG .
+    - docker tag $IMAGE:$SLUG $IMAGE:latest
+    - docker push $IMAGE:$SLUG
+    - docker push $IMAGE:latest
