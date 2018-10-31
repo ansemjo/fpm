@@ -17,3 +17,7 @@ dev :
 	docker build \
 		-t "$(NAME):development" \
 		.
+
+.PHONY: alpine
+alpine :
+	podman build -t docker.io/ansemjo/fpm:alpine alpine/
