@@ -11,6 +11,5 @@ build:
   stage: build
   script:
     - docker build -t $IMAGE:$NAME .
-    - docker tag $IMAGE:$NAME $IMAGE:latest
+    - docker tag $IMAGE:$NAME
     - docker push $IMAGE:$NAME
-    - docker push $IMAGE:latest
