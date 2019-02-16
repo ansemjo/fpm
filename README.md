@@ -6,7 +6,7 @@ A simple container image with [fpm](https://fpm.readthedocs.io/en/latest/index.h
 
 ## Usage
 
-Primarily devised for usage in `Makefile`s to package up your built software projects.
+Primarily devised for usage in Makefiles to package up your built software projects.
 Usage can be as simple as substituting `fpm` with:
 
     podman run --rm -v $PWD:/src ansemjo/fpm [...]
