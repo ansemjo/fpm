@@ -1,0 +1,11 @@
+---
+name: nightly trigger to rebuild latest image on dockerhub
+on: { schedule: [ cron: "00 03 * * *" ] }
+jobs:
+  hubtrigger:
+    name: trigger build on dockerhub
+    runs-on: ubuntu-latest
+    steps:
+      - name: curl webhook
+        run: |
+          curl -X POST -H "Content-Type: application/json" --data '{"docker_tag": "latest"}' ${{ secrets.TRIGGER_URL }}
