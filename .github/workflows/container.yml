@@ -1,7 +1,7 @@
 name: container
 on:
   push:
-    branches: [ main, devel ]
+    branches: [ master, devel ]
   pull_request:
   schedule:
     - cron: "42 02 * * 0"
@@ -30,7 +30,7 @@ jobs:
           target: plain
           tags: ghcr.io/${{ github.repository_owner }}/fpm:latest
           platforms: linux/amd64,linux/arm/v7,linux/arm/v6,linux/arm64,linux/ppc64le
-          push: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+          push: ${{ github.ref == 'refs/heads/master' && github.event_name != 'pull_request' }}
           labels: |
             org.opencontainers.image.title=${{ github.event.repository.name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}
